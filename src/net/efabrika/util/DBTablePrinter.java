@@ -65,7 +65,7 @@ import java.util.StringJoiner;
  */
 public class DBTablePrinter {
 
-    /**
+   /**
      * Default maximum number of rows to query and print.
      */
     private static final int DEFAULT_MAX_ROWS = 10;
@@ -84,7 +84,7 @@ public class DBTablePrinter {
 
     /**
      * Column type category for <code>TINYINT</code>, <code>SMALLINT</code>,
-     * <code>INT</code> and <code>BIGINT</code> columns.
+     * <code>INT</code> and <code>BIGINT</code> and <code>BIGDECIMAL</code> columns.
      */
     public static final int CATEGORY_INTEGER = 2;
 
@@ -515,7 +515,6 @@ public class DBTablePrinter {
             columns and created all Column objects, iterated over the
             ResultSet rows, populated the column values and adjusted
             the column widths.
-
             We cannot start printing just yet because we have to prepare
             a row separator String.
              */
@@ -649,6 +648,7 @@ public class DBTablePrinter {
             case Types.TINYINT:
             case Types.SMALLINT:
             case Types.INTEGER:
+            case Types.NUMERIC:
                 return CATEGORY_INTEGER;
 
             case Types.REAL:
